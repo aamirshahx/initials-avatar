@@ -1,0 +1,28 @@
+{
+  "name": "initials-avatar",
+  "description": "Avatar generator for names initials using css, javascript",
+  "authors": [
+    "aamir.shah.92@gmail.com"
+    "asif.shirazi@colwiz.com"
+    "yawar.khan@colwiz.com"
+  ],
+  "main": [
+    "./dist/bundle.js"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "avatar",
+    "css",
+    "javascript",
+    "js"
+  ],
+  "homepage": "https://github.com/nopantsmonkey/initials-avatar",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
