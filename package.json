@@ -1,0 +1,29 @@
+{
+  "name": "initials-avatar",
+  "version": "1.0.0",
+  "description": "Avatar generator for names initials using css, javascript",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nopantsmonkey/initials-avatar.git"
+  },
+  "author": "aamir.shah.92@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nopantsmonkey/initials-avatar/issues"
+  },
+  "homepage": "https://github.com/nopantsmonkey/initials-avatar#readme",
+  "devDependencies": {
+    "autoprefixer": "^6.1.2",
+    "babel-core": "^6.2.1",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.1.18",
+    "css-loader": "^0.23.0",
+    "precss": "^1.3.0",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.9"
+  }
+}
