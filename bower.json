@@ -2,13 +2,11 @@
   "name": "initials-avatar",
   "description": "Avatar generator for names initials using css, javascript",
   "authors": [
-    "aamir.shah.92@gmail.com"
-    "asif.shirazi@colwiz.com"
+    "aamir.shah.92@gmail.com",
+    "asif.shirazi@colwiz.com",
     "yawar.khan@colwiz.com"
   ],
-  "main": [
-    "./dist/bundle.js"
-  ],
+  "main": "./dist/bundle.js",
   "license": "MIT",
   "keywords": [
     "avatar",
