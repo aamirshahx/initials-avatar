@@ -1,4 +1,4 @@
-require("./style.css");
+require("./style.pcss");
 
 function createAvatar(el){
   const colors = [
