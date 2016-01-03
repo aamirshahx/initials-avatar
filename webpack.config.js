@@ -19,4 +19,4 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.css', '.pcss']
   }
-}
+};
