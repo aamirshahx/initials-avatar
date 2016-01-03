@@ -12,18 +12,16 @@ function createAvatar(el){
     "#ea1e63", "#62b6e0", "#484d9c"
   ];
 
-  const name =  el.getAttribute("data-avatar");
+  const name =  el.getAttribute("data-avatar") || "PK";
   const idx1 = name[0].charCodeAt()-64;
-  const idx2 = name.length>1 ? name[1].charCodeAt()-64 : 0
+  const idx2 = name.length>1 ? name[1].charCodeAt()-64 : 0;
   const idx_from_alphabets = ((idx1*(idx2))+idx1);
   el.setAttribute("style", "background-color:" + colors[idx_from_alphabets % colors.length]);
 }
 
 const insertListener = (event) => {
-	if (event.animationName == "nodeInserted"){
-    createAvatar(event.target);
-  }
-}
+	if (event.animationName == "nodeInserted")  createAvatar(event.target);
+};
 
 document.addEventListener("animationstart", insertListener, false);
 document.addEventListener("MSAnimationStart", insertListener, false);
