@@ -23,9 +23,9 @@ function createAvatar(el){
       el.setAttribute("data-avatar", name);
   }
   
-  name =  el.getAttribute("data-avatar") || "PK";
-  const idx1 = name[0].charCodeAt()-64;
-  const idx2 = name.length>1 ? name[1].charCodeAt()-64 : 0;
+  const name =  el.getAttribute("data-avatar") || "PK";
+  const idx1 = Math.abs(name[0].charCodeAt()-64);
+  const idx2 = name.length>1 ? Math.abs(name[1].charCodeAt()-64) : 0;
   const idx_from_alphabets = ((idx1*(idx2))+idx1);
   el.setAttribute("style", "background-color:" + colors[idx_from_alphabets % colors.length]);
 }
