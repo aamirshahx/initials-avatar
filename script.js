@@ -12,7 +12,18 @@ function createAvatar(el){
     "#ea1e63", "#62b6e0", "#484d9c"
   ];
 
-  const name =  el.getAttribute("data-avatar") || "PK";
+  const fullTitle = el.getAttribute("data-fulltitle") || "";
+  let name = "";
+  if (fullTitle) {
+      let titleToken = fullTitle.split(" ");
+      name = (titleToken[0][0]).toUpperCase();
+      if(titleToken.length > 1){ 
+        name += (titleToken[1][0]).toUpperCase();
+      }
+      el.setAttribute("data-avatar", name);
+  }
+  
+  name =  el.getAttribute("data-avatar") || "PK";
   const idx1 = name[0].charCodeAt()-64;
   const idx2 = name.length>1 ? name[1].charCodeAt()-64 : 0;
   const idx_from_alphabets = ((idx1*(idx2))+idx1);
@@ -20,7 +31,8 @@ function createAvatar(el){
 }
 
 const insertListener = (event) => {
-	if (event.animationName == "nodeInserted")  createAvatar(event.target);
+	if (event.animationName == "nodeInserted")  
+    createAvatar(event.target);
 };
 
 document.addEventListener("animationstart", insertListener, false);
