@@ -12,7 +12,7 @@ function createAvatar(el){
     "#ea1e63", "#62b6e0", "#484d9c"
   ];
 
-  const fullTitle = el.getAttribute("data-fulltitle") || "";
+  const fullTitle = (el.getAttribute("data-fulltitle") || "").trim();
   let name = "";
   if (fullTitle) {
       let titleToken = fullTitle.split(" ");
