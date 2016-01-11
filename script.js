@@ -12,12 +12,12 @@ function createAvatar(el){
     "#ea1e63", "#62b6e0", "#484d9c"
   ];
 
-  const fullTitle = el.getAttribute("data-fulltitle") || "";
+  const fullTitle = trim(el.getAttribute("data-fulltitle") || "");
   let name = "";
   if (fullTitle) {
       let titleToken = fullTitle.split(" ");
       name = (titleToken[0][0]).toUpperCase();
-      if(titleToken.length > 1){ 
+      if(titleToken.length > 1 && titleToken[1][0]){ 
         name += (titleToken[1][0]).toUpperCase();
       }
       el.setAttribute("data-avatar", name);
@@ -34,6 +34,14 @@ const insertListener = (event) => {
 	if (event.animationName == "nodeInserted")  
     createAvatar(event.target);
 };
+
+function trim(str){
+    if (typeof str == "string" && str && str.length)
+        str = str.replace(/^\s+|\s+$|\s+(?=\s)/g, '');
+    else
+        str = "";
+    return str;
+}
 
 document.addEventListener("animationstart", insertListener, false);
 document.addEventListener("MSAnimationStart", insertListener, false);
