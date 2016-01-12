@@ -12,13 +12,13 @@ function createAvatar(el){
     "#ea1e63", "#62b6e0", "#484d9c"
   ];
 
-  const fullTitle = trim(el.getAttribute("data-fulltitle") || "");
+  const fullTitle = trim(el.getAttribute("data-fulltitle") || "").replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
   let name = "";
   if (fullTitle) {
       let titleToken = fullTitle.split(" ");
       name = (titleToken[0][0]).toUpperCase();
-      if(titleToken.length > 1 && titleToken[1][0]){ 
-        name += (titleToken[1][0]).toUpperCase();
+      if(titleToken.length > 1 && titleToken[titleToken.length-1][0]){
+        name += (titleToken[titleToken.length-1][0]).toUpperCase();
       }
       el.setAttribute("data-avatar", name);
   }
