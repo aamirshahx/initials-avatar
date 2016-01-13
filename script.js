@@ -21,8 +21,10 @@ function createAvatar(el){
         name += (titleToken[titleToken.length-1][0]).toUpperCase();
       }
       el.setAttribute("data-avatar", name);
+  } else {
+    name = el.getAttribute("data-avatar");
+    el.setAttribute("data-avatar", name || "");
   }
-
   name =  el.getAttribute("data-avatar") || "PK";
   const idx1 = Math.abs(name[0].charCodeAt()-64);
   const idx2 = name.length>1 ? Math.abs(name[1].charCodeAt()-64) : 0;
