@@ -3,6 +3,10 @@
 	to { opacity: 1; }
 }
 [data-fulltitle],[data-avatar]{
+	animation-duration: 0.001s;
+  	animation-name: nodeInserted;	
+}
+[data-avatar]{
   width: 164px;
   height: 164px;
   display: inline-block;
@@ -10,8 +14,6 @@
   font-size: 100%;
   line-height: 0;
   overflow: hidden;
-  animation-duration: 0.001s;
-  animation-name: nodeInserted;
   &:before{
     position: absolute;
     left: 0;

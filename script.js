@@ -12,17 +12,23 @@ function createAvatar(el) {
 		"#ea1e63", "#62b6e0", "#484d9c"
 	];
 
-	const fullTitle = (el.getAttribute("data-fulltitle") || "").trim();
+	let fullTitle = trim((el.getAttribute("data-fulltitle") || "").replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, ''));
+	if(fullTitle == ""){
+		fullTitle = trim(el.getAttribute("data-fulltitle") || "");
+	}
 	let name = "";
 	if(fullTitle) {
 		let titleToken = fullTitle.split(" ");
 		var firstChar = titleToken[0][0];
 		name = isLetter(firstChar) ? firstChar.toUpperCase() : firstChar;
-		if(titleToken.length > 1) {
+		if(titleToken.length > 1 && titleToken[titleToken.length - 1][0]) {
 			var lastChar = titleToken[1][0];
 			name += isLetter(lastChar) ? lastChar.toUpperCase() : lastChar;
 		}
 		el.setAttribute("data-avatar", name);
+	} else {
+		name = el.getAttribute("data-avatar");
+		el.setAttribute("data-avatar", name || "");
 	}
 
 	name = el.getAttribute("data-avatar") || "PK";
@@ -40,6 +46,14 @@ const insertListener = (event) => {
 const isLetter = (str) => {
 	return str.length === 1 && (/[a-z]/i).test(str);
 };
+
+function trim(str) {
+	if(typeof str == "string" && str && str.length)
+		str = str.replace(/^\s+|\s+$|\s+(?=\s)/g, '');
+	else
+		str = "";
+	return str;
+}
 
 document.addEventListener("animationstart", insertListener, false);
 document.addEventListener("MSAnimationStart", insertListener, false);
