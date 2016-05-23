@@ -31,11 +31,13 @@ function createAvatar(el) {
 		el.setAttribute("data-avatar", name || "");
 	}
 
-	name = el.getAttribute("data-avatar") || "PK";
-	const idx1 = Math.abs(name[0].charCodeAt() - 64);
-	const idx2 = name.length > 1 ? Math.abs(name[1].charCodeAt() - 64) : 0;
-	const idx_from_alphabets = ((idx1 * (idx2)) + idx1);
-	el.setAttribute("style", "background-color:" + colors[idx_from_alphabets % colors.length]);
+	name = el.getAttribute("data-avatar");
+	if(name) {
+		const idx1 = Math.abs(name[0].charCodeAt() - 64);
+		const idx2 = name.length > 1 ? Math.abs(name[1].charCodeAt() - 64) : 0;
+		const idx_from_alphabets = ((idx1 * (idx2)) + idx1);
+		el.setAttribute("style", "background-color:" + colors[idx_from_alphabets % colors.length]);
+	}
 }
 
 const insertListener = (event) => {
@@ -55,6 +57,10 @@ function trim(str) {
 	return str;
 }
 
+window.rerenderAvatar = () => {
+	let avatars = document.querySelectorAll('[data-avatar]');
+	[].slice.call(avatars).forEach(avatar => createAvatar(avatar));
+};
 document.addEventListener("animationstart", insertListener, false);
 document.addEventListener("MSAnimationStart", insertListener, false);
 document.addEventListener("webkitAnimationStart", insertListener, false);
