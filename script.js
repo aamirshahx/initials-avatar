@@ -22,7 +22,7 @@ function createAvatar(el) {
 		var firstChar = titleToken[0][0];
 		name = isLetter(firstChar) ? firstChar.toUpperCase() : firstChar;
 		if(titleToken.length > 1 && titleToken[titleToken.length - 1][0]) {
-			var lastChar = titleToken[1][0];
+			var lastChar = titleToken[titleToken.length - 1][0];
 			name += isLetter(lastChar) ? lastChar.toUpperCase() : lastChar;
 		}
 		el.setAttribute("data-avatar", name);
