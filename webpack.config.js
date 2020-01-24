@@ -13,7 +13,6 @@ module.exports = {
             {test: /\.js$/, loader: 'babel?presets[]=es2015', exclude: /(node_modules|bower_components)/}
         ]
     },
-    devtool: 'source-map',
     postcss: function () {
         return [autoprefixer, precss];
     },
