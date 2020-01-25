@@ -33,7 +33,7 @@ function createAvatar(el) {
 
 	name = el.getAttribute("data-avatar");
 	if (name) {
-		const idx = name.split('').map(x => x.charCodeAt(0).toString()).join('') % colors.length
+		const idx = [...name].map(x=>x.charCodeAt(0)).join('');
 		el.setAttribute("style", "background-color:" + colors[idx % colors.length]);
 	}
 }
