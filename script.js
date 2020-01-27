@@ -13,15 +13,15 @@ function createAvatar(el) {
 	];
 
 	let fullTitle = trim((el.getAttribute("data-fulltitle") || "").replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, ''));
-	if(fullTitle == ""){
+	if (fullTitle == "") {
 		fullTitle = trim(el.getAttribute("data-fulltitle") || "");
 	}
 	let name = "";
-	if(fullTitle) {
+	if (fullTitle) {
 		let titleToken = fullTitle.split(" ");
 		var firstChar = titleToken[0][0];
 		name = isLetter(firstChar) ? firstChar.toUpperCase() : firstChar;
-		if(titleToken.length > 1 && titleToken[titleToken.length - 1][0]) {
+		if (titleToken.length > 1 && titleToken[titleToken.length - 1][0]) {
 			var lastChar = titleToken[titleToken.length - 1][0];
 			name += isLetter(lastChar) ? lastChar.toUpperCase() : lastChar;
 		}
@@ -32,16 +32,14 @@ function createAvatar(el) {
 	}
 
 	name = el.getAttribute("data-avatar");
-	if(name) {
-		const idx1 = Math.abs(name[0].charCodeAt() - 64);
-		const idx2 = name.length > 1 ? Math.abs(name[1].charCodeAt() - 64) : 0;
-		const idx_from_alphabets = ((idx1 * (idx2)) + idx1);
-		el.setAttribute("style", "background-color:" + colors[idx_from_alphabets % colors.length]);
+	if (name) {
+		const idx = [...name].map(x=>x.charCodeAt(0)).join('');
+		el.setAttribute("style", "background-color:" + colors[idx % colors.length]);
 	}
 }
 
 const insertListener = (event) => {
-	if(event.animationName == "nodeInserted")
+	if (event.animationName == "nodeInserted")
 		createAvatar(event.target);
 };
 
@@ -50,7 +48,7 @@ const isLetter = (str) => {
 };
 
 function trim(str) {
-	if(typeof str == "string" && str && str.length)
+	if (typeof str == "string" && str && str.length)
 		str = str.replace(/^\s+|\s+$|\s+(?=\s)/g, '');
 	else
 		str = "";
